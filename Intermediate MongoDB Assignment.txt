@@ -1,0 +1,61 @@
+# planets collection 
+[{
+ $project: {
+  hasRings: 1,
+  name: 1,
+  surfaceTemperatureC: 1,
+  orderFromSun: 1
+ }
+}, {
+ $sort: {
+  orderFromSun: -1
+ }
+}, {
+ $sort: {
+  'surfaceTemperatureC.mean': -1
+ }
+}, {
+ $match: {
+  hasRings: {
+   $gte: true
+  }
+ }
+}, {}]
+insight
+/**
+ * neptune is the farthest planet from the sun 
+ */
+/**
+ * there is iverse relationship between 
+ * distance and temperature
+ * 
+/**
+ * there is just four planets that is have ring .
+ */
+
+sales 
+[{
+ $project: {
+  purchaseMethod: 1,
+  couponUsed: 1,
+  storeLocation: 1
+ }
+}, {
+ $group: {
+  _id: {
+   couponUsed: '$couponUsed',
+   purchaseMethod: '$purchaseMethod'
+  },
+  count: {
+   $sum: 1
+  }
+ }
+}, {
+ $sort: {
+  count: -1
+ }
+}]
+/**
+ * the store method is the most method that is used 
+ * without any coupon 
+ */
